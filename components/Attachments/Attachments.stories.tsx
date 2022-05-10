@@ -11,9 +11,9 @@ export default {
   component: Attachments,
 } as ComponentMeta<typeof Attachments>;
 
-export const Empty = () => <Attachments />;
+export const Empty = () => <Attachments onDrop={() => {}} />;
 export const SingleImage = () => (
-  <Attachments attachments={[{ src: testImg1 }]} />
+  <Attachments attachments={[{ src: testImg1 }]} onDrop={() => {}} />
 );
 
 export const MultipleImages = () => (
@@ -27,5 +27,6 @@ export const MultipleImages = () => (
       { src: "", isLoading: true },
       { src: "", isLoading: true },
     ]}
+    onDrop={() => {}}
   />
 );

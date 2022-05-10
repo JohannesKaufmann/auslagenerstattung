@@ -72,7 +72,9 @@ const PDFDocument = ({ document }: { document: IDocument }) => {
     .map((p) => p.img_object_url);
 
   return (
+    // @ts-ignore
     <Document>
+      {/* @ts-ignore */}
       <Page size="A4" style={styles.page}>
         <Title>Auslagenerstattung</Title>
         <TodaysDate />
@@ -95,6 +97,7 @@ const PDFDocument = ({ document }: { document: IDocument }) => {
       </Page>
 
       {images.map((image) => (
+        // @ts-ignore
         <Page key={image}>
           <Image src={image} />
 
