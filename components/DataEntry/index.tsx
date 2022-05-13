@@ -4,10 +4,12 @@ import SignatureCanvas from "react-signature-canvas";
 import { RendererSchedulerContext } from "components/HiddenCanvas";
 import Attachments from "components/Attachments/Attachments";
 import Table from "components/Table";
-import { Fieldset, Input } from "components/Form";
+import { Fieldset } from "components/Form";
 
 import { handleFiles } from "lib/attachments";
 import { IDocument, dataURLToObjectURL } from "lib/state";
+import DataCompany from "./DataCompany";
+import DataRecipient from "./DataRecipient";
 
 const DataEntry = ({
   document,
@@ -103,83 +105,12 @@ const DataEntry = ({
           update();
         }}
       >
-        <Fieldset title="Firma" className="w-full">
-          <Input
-            label="Firmenname"
-            placeholder="Beispiel GmbH"
-            value={document.company.name}
-            onChange={(e) => {
-              const val = e.target.value;
-              changeField("company", "name", val);
-            }}
-            className="w-full"
-          />
-          <Input
-            label="Straße"
-            placeholder="Musterstraße 1"
-            value={document.company.street}
-            onChange={(e) => {
-              const val = e.target.value;
-              changeField("company", "street", val);
-            }}
-          />
+        <DataCompany company={document.company} changeField={changeField} />
 
-          <div className="flex gap-x-4">
-            <Input
-              label="PLZ"
-              placeholder="12435"
-              value={document.company.zipcode}
-              onChange={(e) => {
-                const val = e.target.value;
-                changeField("company", "zipcode", val);
-              }}
-            />
-            <Input
-              label="Ort"
-              placeholder="Berlin"
-              value={document.company.city}
-              onChange={(e) => {
-                const val = e.target.value;
-                changeField("company", "city", val);
-              }}
-            />
-          </div>
-        </Fieldset>
-
-        <Fieldset title="Empfänger">
-          <Input
-            label="Kontoinhaber"
-            placeholder="Max Mustermann"
-            value={document.recipient.account_owner}
-            onChange={(e) => {
-              const val = e.target.value;
-              changeField("recipient", "account_owner", val);
-            }}
-          />
-
-          <div className="flex gap-x-4">
-            <Input
-              label="IBAN"
-              placeholder="DE02100500000054540402"
-              className="tabular-nums"
-              value={document.recipient.iban}
-              onChange={(e) => {
-                const val = e.target.value;
-                changeField("recipient", "iban", val);
-              }}
-            />
-            <Input
-              label="BIC"
-              placeholder="BELADEBE"
-              className="tabular-nums"
-              value={document.recipient.bic}
-              onChange={(e) => {
-                const val = e.target.value;
-                changeField("recipient", "bic", val);
-              }}
-            />
-          </div>
-        </Fieldset>
+        <DataRecipient
+          recipient={document.recipient}
+          changeField={changeField}
+        />
 
         <Fieldset title="Auflistung">
           <Table records={document.records} updateRecords={updateRecords} />
@@ -208,13 +139,10 @@ const DataEntry = ({
             ref={signatureRef}
             onEnd={onSignatureEnd}
             //
-
             penColor="black"
             canvasProps={{
-              // width: "100%",
-              width: 500,
-              height: 200,
-              className: "rounded-lg bg-gray-100 border border-gray-300",
+              className:
+                "rounded-lg bg-gray-100 border border-gray-300 w-full h-[300px]",
             }}
           />
         </Fieldset>
