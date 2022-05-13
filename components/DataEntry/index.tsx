@@ -106,7 +106,6 @@ const DataEntry = ({
         }}
       >
         <DataCompany company={document.company} changeField={changeField} />
-
         <DataRecipient
           recipient={document.recipient}
           changeField={changeField}

@@ -46,7 +46,7 @@ const CustomTable = ({
   // Render the UI for your table
   return (
     <>
-      <table {...getTableProps()}>
+      <table {...getTableProps()} className="w-full">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -78,6 +78,8 @@ const CustomTable = ({
           onClick={(e) => {
             e.preventDefault();
             addRow();
+
+            // TODO: move focus to new row
           }}
         >
           Neuer Eintrag

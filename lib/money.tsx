@@ -1,27 +1,18 @@
 import { IRecord } from "./state";
+import { formatValue } from "react-currency-input-field";
 
-const euroFormatter = new Intl.NumberFormat("de-DE", {
-  style: "currency",
-  currency: "EUR",
-});
-
-export const parseAmount = (text: string): number => {
-  text = text.replace(",", ".").replace("€", "").trim();
-  const num = parseFloat(text);
-
-  if (isNaN(num)) {
-    return 0;
-  }
-  return num;
-};
-export const formatAmount = (text: string): string => {
-  let num = parseAmount(text);
-  return euroFormatter.format(num);
+export const formatAmount = (value: number): string => {
+  return formatValue({
+    // Pad the values (e.g. 2.1 -> 2.10)
+    decimalScale: 2,
+    value: value.toString(),
+    intlConfig: { locale: "de-DE", currency: "EUR" },
+  });
 };
 
-export const getTotal = (records: IRecord[]) => {
-  const amounts = records.map((e) => parseAmount(e.amount));
+export const getTotal = (records: IRecord[]): string => {
+  const amounts = records.map((e) => e.amount);
   const total = amounts.reduce((partialSum, a) => partialSum + a, 0);
 
-  return euroFormatter.format(total);
+  return formatAmount(total);
 };

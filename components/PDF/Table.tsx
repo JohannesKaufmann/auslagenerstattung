@@ -1,6 +1,6 @@
 import { Text, View } from "@react-pdf/renderer";
 import { HEADING_COLOR } from "./Heading";
-import { getTotal } from "lib/money";
+import { formatAmount, getTotal } from "lib/money";
 
 const AMOUNT_WIDTH = "80px";
 
@@ -41,7 +41,7 @@ const Record = ({ description, amount }) => (
         borderBottom: TABLE_BORDER,
       }}
     >
-      {amount}
+      {formatAmount(amount)}
     </Text>
   </View>
 );

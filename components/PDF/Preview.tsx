@@ -47,7 +47,7 @@ const PreviewAndDownload = ({ children }) => {
       <iframe
         src={src}
         title={"Title"}
-        className="h-full min-h-[500px] mt-4 rounded-md"
+        className="h-full min-h-[500px] mt-4 rounded-md border border-gray-300"
       />
     </div>
   );

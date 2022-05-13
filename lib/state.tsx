@@ -17,8 +17,7 @@ export interface IRecipient {
 export interface IRecord {
   description: string;
 
-  // TODO: change to number
-  amount: string;
+  amount: number;
 }
 
 export interface IAttachmentPage {
@@ -85,12 +84,12 @@ export const getInitialDocument = (): IDocument => ({
       description:
         "REWE: Essen für das Mittagessen am Wochenende + Montag da Feiertag sowie Materialen für Brainstorming",
       // @ts-ignore
-      amount: "405,40 €",
+      amount: 405.4,
     },
     {
       description: "Metro",
       // @ts-ignore
-      amount: "15,00 €",
+      amount: 15,
     },
   ],
   attachments: [],
