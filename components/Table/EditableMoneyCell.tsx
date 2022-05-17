@@ -17,8 +17,10 @@ const EditableMoneyCell = ({
       intlConfig={{ locale: "de-DE", currency: "EUR" }}
       // Pad the values (e.g. 2.1 -> 2.10)
       decimalScale={2}
-      onValueChange={(value, name, values) => {
-        updateMyData(index, id, values.float);
+      onValueChange={(_, name, values) => {
+        const value = values.float || 0;
+
+        updateMyData(index, id, value);
       }}
     />
   );

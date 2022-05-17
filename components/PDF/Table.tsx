@@ -46,6 +46,14 @@ const Record = ({ description, amount }) => (
   </View>
 );
 
+const filterForFilledRecords = (record) => {
+  const allEmpty = Object.values(record).every(
+    (field) => field === "" || field === 0
+  );
+
+  return !allEmpty;
+};
+
 export const RecordsTable = ({ records }) => (
   <View style={{ marginVertical: 16 }}>
     {/* <Heading>Auflistung</Heading> */}
@@ -102,14 +110,9 @@ export const RecordsTable = ({ records }) => (
         Betrag
       </Text>
     </View>
-    {records
-      .filter((record) => {
-        const allEmpty = Object.values(record).every((field) => field === "");
-        return !allEmpty;
-      })
-      .map((record, index) => {
-        return <Record key={index} {...record} />;
-      })}
+    {records.filter(filterForFilledRecords).map((record, index) => {
+      return <Record key={index} {...record} />;
+    })}
 
     <Text
       style={{
