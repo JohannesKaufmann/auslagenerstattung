@@ -15,6 +15,7 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
         <Input
           label="Kontoinhaber"
           placeholder="Max Mustermann"
+          autoComplete="name"
           value={recipient.account_owner}
           onChange={(e) => {
             const val = e.target.value;

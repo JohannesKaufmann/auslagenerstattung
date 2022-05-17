@@ -14,6 +14,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
         <Input
           label="Firmenname"
           placeholder="Beispiel GmbH"
+          autoComplete="organization"
           value={company.name}
           onChange={(e) => {
             const val = e.target.value;
@@ -26,6 +27,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
         <Input
           label="Straße"
           placeholder="Musterstraße 1"
+          autoComplete="address-line1"
           value={company.street}
           onChange={(e) => {
             const val = e.target.value;
@@ -39,6 +41,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
         <Input
           label="PLZ"
           placeholder="12435"
+          autoComplete="postal-code"
           value={company.zipcode}
           onChange={(e) => {
             const val = e.target.value;
@@ -51,6 +54,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
         <Input
           label="Ort"
           placeholder="Berlin"
+          autoComplete="address-level1"
           value={company.city}
           onChange={(e) => {
             const val = e.target.value;
