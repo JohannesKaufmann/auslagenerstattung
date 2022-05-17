@@ -1,48 +1,23 @@
-import { Text, View } from "@react-pdf/renderer";
-import { HEADING_COLOR } from "./Heading";
+import { View } from "@react-pdf/renderer";
+import { Heading } from "./Heading";
 import { formatAmount, getTotal } from "lib/money";
+import TableCell from "./TableCell";
 
+// The "amount" column should be about 80px wide, which is enough for 10k€.
 const AMOUNT_WIDTH = "80px";
-
-const TABLE_CELL_COLOR = "rgba(50, 65, 85, 1)";
-
-const TABLE_PADDING = 8;
-const TABLE_EDGE_PADDING = 4;
-
-const TABLE_BORDER_COLOR_CELL = "rgba(226, 232, 240, 1)";
-const TABLE_BORDER_COLOR_HEADER = "rgba(203, 213, 225, 1)";
-
-const TABLE_BORDER = `1px solid ${TABLE_BORDER_COLOR_CELL}`;
 
 const Record = ({ description, amount }) => (
   <View style={{ display: "flex", flexDirection: "row" }}>
-    <Text
-      style={{
-        flexGrow: 1,
-
-        color: TABLE_CELL_COLOR,
-        padding: TABLE_PADDING,
-        paddingLeft: TABLE_EDGE_PADDING,
-        borderBottom: TABLE_BORDER,
-      }}
-    >
+    <TableCell position="leftEdge" type="bodyCell" style={{ flexGrow: 1 }}>
       {description}
-    </Text>
-    <Text
-      style={{
-        flexShrink: 0,
-        width: AMOUNT_WIDTH,
-        textAlign: "right",
-
-        color: TABLE_CELL_COLOR,
-        padding: TABLE_PADDING,
-        paddingRight: TABLE_EDGE_PADDING,
-        // borderLeft: TABLE_BORDER,
-        borderBottom: TABLE_BORDER,
-      }}
+    </TableCell>
+    <TableCell
+      position="rightEdge"
+      type="bodyCell"
+      style={{ flexShrink: 0, width: AMOUNT_WIDTH, textAlign: "right" }}
     >
       {formatAmount(amount)}
-    </Text>
+    </TableCell>
   </View>
 );
 
@@ -56,75 +31,41 @@ const filterForFilledRecords = (record) => {
 
 export const RecordsTable = ({ records }) => (
   <View style={{ marginVertical: 16 }}>
-    {/* <Heading>Auflistung</Heading> */}
-
     <View
       style={{
         display: "flex",
         flexDirection: "row",
-
-        // paddingBottom: 4,
-        // borderBottom: TABLE_BORDER,
-        //  "1px solid rgb(243, 243, 243)",
       }}
     >
-      <Text
-        style={{
-          flexGrow: 1,
-          // fontWeight: "bold",
-
-          textTransform: "uppercase",
-          fontSize: 10,
-          letterSpacing: 0.3,
-          color: HEADING_COLOR,
-
-          // color: TABLE_HEADER_COLOR,
-          padding: TABLE_PADDING,
-          paddingLeft: TABLE_EDGE_PADDING,
-          borderBottom: TABLE_BORDER,
-          borderBottomColor: TABLE_BORDER_COLOR_HEADER,
-        }}
-      >
-        Beschreibung
-      </Text>
-      <Text
+      <TableCell position="leftEdge" type="headerCell" style={{ flexGrow: 1 }}>
+        <Heading>Beschreibung</Heading>
+      </TableCell>
+      <TableCell
+        position="rightEdge"
+        type="headerCell"
         style={{
           width: AMOUNT_WIDTH,
 
           textAlign: "right",
-
-          textTransform: "uppercase",
-          fontSize: 10,
-          letterSpacing: 0.3,
-          color: HEADING_COLOR,
-
-          // color: TABLE_HEADER_COLOR,
-          padding: TABLE_PADDING,
-          paddingRight: TABLE_EDGE_PADDING,
-          // borderLeft: TABLE_BORDER,
-          borderBottom: TABLE_BORDER,
-          borderBottomColor: TABLE_BORDER_COLOR_HEADER,
-          // borderLeft: "1px solid rgb(243, 243, 243)",
         }}
       >
-        Betrag
-      </Text>
+        <Heading>Betrag</Heading>
+      </TableCell>
     </View>
     {records.filter(filterForFilledRecords).map((record, index) => {
       return <Record key={index} {...record} />;
     })}
 
-    <Text
+    <TableCell
+      position="rightEdge"
+      type="headerCell"
       style={{
-        // fontFamily: "monospace",
-        fontWeight: "bold",
-
         textAlign: "right",
-        padding: TABLE_PADDING,
-        paddingRight: TABLE_EDGE_PADDING,
+        // We don't want the border for the total amount
+        borderBottom: 0,
       }}
     >
       Gesamtbetrag: {getTotal(records)}
-    </Text>
+    </TableCell>
   </View>
 );
