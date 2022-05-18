@@ -61,6 +61,7 @@ export const RecordsTable = ({ records }) => (
       type="headerCell"
       style={{
         textAlign: "right",
+        fontWeight: "semibold",
         // We don't want the border for the total amount
         borderBottom: 0,
       }}

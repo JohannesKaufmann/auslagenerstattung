@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Fieldset, Input } from "components/Form";
-import { IRecipient } from "lib/state";
+import { IRecipient, placeholders } from "lib/state";
 
 interface IProps {
   recipient: IRecipient;
@@ -14,8 +14,8 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
       <div className="grid grid-cols-3 gap-y-2 gap-x-4">
         <Input
           label="Kontoinhaber"
-          placeholder="Max Mustermann"
           autoComplete="name"
+          placeholder={placeholders.recipient.account_owner}
           value={recipient.account_owner}
           onChange={(e) => {
             const val = e.target.value;
@@ -28,8 +28,8 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
 
         <Input
           label="IBAN"
-          placeholder="DE02100500000054540402"
           className="tabular-nums"
+          placeholder={placeholders.recipient.iban}
           value={recipient.iban}
           onChange={(e) => {
             const val = e.target.value;
@@ -41,8 +41,8 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
         />
         <Input
           label="BIC"
-          placeholder="BELADEBE"
           className="tabular-nums"
+          placeholder={placeholders.recipient.bic}
           value={recipient.bic}
           onChange={(e) => {
             const val = e.target.value;

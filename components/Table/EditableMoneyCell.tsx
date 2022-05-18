@@ -1,6 +1,7 @@
 import React from "react";
 import { RawInput } from "components/Form/Input";
 import CurrencyInput from "react-currency-input-field";
+import { formatAmount } from "lib/money";
 
 const EditableMoneyCell = ({
   value: initialValue,
@@ -12,7 +13,7 @@ const EditableMoneyCell = ({
     <CurrencyInput
       customInput={RawInput}
       className="text-right tabular-nums"
-      placeholder=""
+      placeholder={formatAmount(0)}
       defaultValue={initialValue}
       intlConfig={{ locale: "de-DE", currency: "EUR" }}
       // Pad the values (e.g. 2.1 -> 2.10)

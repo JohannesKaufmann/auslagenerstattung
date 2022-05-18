@@ -45,6 +45,9 @@ export interface IDocument {
 
   signature: null | string;
 }
+
+// - - - - - - - - - - - //
+
 // export const getInitialDocument = (): IDocument => ({
 //   company: {
 //     name: "",
@@ -73,10 +76,10 @@ export const getInitialDocument = (): IDocument => ({
     city: "Berlin",
   },
   recipient: {
-    account_owner: "Johannes Kaufmann",
+    account_owner: "",
 
-    iban: "DE02100500000054540402",
-    bic: "BELADEBE",
+    iban: "",
+    bic: "",
   },
 
   records: [
@@ -96,6 +99,27 @@ export const getInitialDocument = (): IDocument => ({
 
   signature: null,
 });
+
+// - - - - - - - - - - - //
+
+export interface IPlaceholders {
+  company: ICompany;
+  recipient: IRecipient;
+}
+export const placeholders: IPlaceholders = {
+  company: {
+    name: "Beispiel GmbH",
+    street: "Musterstraße 1",
+    zipcode: "12435",
+    city: "Berlin",
+  },
+  recipient: {
+    account_owner: "Max Mustermann",
+
+    iban: "DE02100500000054540402",
+    bic: "BELADEBE",
+  },
+};
 
 // - - - - - - - - - - - //
 

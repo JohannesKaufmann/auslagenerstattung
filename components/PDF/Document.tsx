@@ -1,4 +1,5 @@
 import {
+  Font,
   Page,
   Text,
   View,
@@ -11,11 +12,33 @@ import { IDocument } from "lib/state";
 import { Information } from "./Information";
 import { RecordsTable } from "./Table";
 
-const PAGE_MARGIN = 32;
+Font.register({
+  family: "OpenSans",
+  fonts: [
+    {
+      src: "/fonts/OpenSans-Regular.ttf",
+      fontStyle: "normal",
+      fontWeight: 400,
+    },
+    {
+      src: "/fonts/OpenSans-Italic.ttf",
+      fontStyle: "italic",
+      fontWeight: 400,
+    },
+    {
+      src: "/fonts/OpenSans-SemiBold.ttf",
+      fontStyle: "normal",
+      fontWeight: "semibold",
+    },
+  ],
+});
 
+const PAGE_MARGIN = 32;
 const styles = StyleSheet.create({
   page: {
     padding: PAGE_MARGIN,
+
+    fontFamily: "OpenSans",
     fontSize: 12,
     color: "rgba(50, 65, 85, 1)",
   },

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Fieldset, Input } from "components/Form";
-import { ICompany } from "lib/state";
+import { ICompany, placeholders } from "lib/state";
 
 interface IProps {
   company: ICompany;
@@ -13,8 +13,8 @@ const DataCompany = ({ company, changeField }: IProps) => {
       <div className="grid grid-cols-3 gap-y-2 gap-x-4">
         <Input
           label="Firmenname"
-          placeholder="Beispiel GmbH"
           autoComplete="organization"
+          placeholder={placeholders.company.name}
           value={company.name}
           onChange={(e) => {
             const val = e.target.value;
@@ -26,8 +26,8 @@ const DataCompany = ({ company, changeField }: IProps) => {
         />
         <Input
           label="Straße"
-          placeholder="Musterstraße 1"
           autoComplete="address-line1"
+          placeholder={placeholders.company.street}
           value={company.street}
           onChange={(e) => {
             const val = e.target.value;
@@ -40,8 +40,8 @@ const DataCompany = ({ company, changeField }: IProps) => {
 
         <Input
           label="PLZ"
-          placeholder="12435"
           autoComplete="postal-code"
+          placeholder={placeholders.company.zipcode}
           value={company.zipcode}
           onChange={(e) => {
             const val = e.target.value;
@@ -53,8 +53,8 @@ const DataCompany = ({ company, changeField }: IProps) => {
         />
         <Input
           label="Ort"
-          placeholder="Berlin"
           autoComplete="address-level1"
+          placeholder={placeholders.company.city}
           value={company.city}
           onChange={(e) => {
             const val = e.target.value;
