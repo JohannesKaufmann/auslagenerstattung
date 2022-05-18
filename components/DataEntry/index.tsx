@@ -99,7 +99,7 @@ const DataEntry = ({
   return (
     <main>
       <form
-        className="p-8"
+        className="p-4 md:p-8"
         onBlur={() => {
           console.log("onblur");
           update();

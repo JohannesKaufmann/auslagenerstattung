@@ -122,7 +122,7 @@ const PDFDocument = ({ document }: { document: IDocument }) => {
       {images.map((image) => (
         // @ts-ignore
         <Page key={image}>
-          <Image src={image} />
+          <Image src={image} style={{ objectFit: "scale-down" }} />
 
           <PageNumber />
         </Page>
