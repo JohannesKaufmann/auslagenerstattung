@@ -1,13 +1,9 @@
 import React from "react";
 import { X as CloseIcon, Loader as LoaderIcon } from "react-feather";
 
-export const DEFAULT_IMG_SIZE = 150;
-export const DIN_A4_RATIO = 1.41421;
-
 export const ROUNDING = "rounded-md";
 
 const Attachment = ({
-  imgSize = DEFAULT_IMG_SIZE,
   src = "",
   isOpen = false,
   isLoading = false,
@@ -21,22 +17,10 @@ const Attachment = ({
   }
 
   return (
-    <button
-      className={`relative ${ROUNDING} transition-all bg-gray-50 border border-gray-300 hover:border-blue-500 overflow-hidden shadow hover:shadow-md 
-        ${cursor}
-      `}
-      style={{
-        // DIN A4 is approximately 1:1.41421
-        width: imgSize,
-        height: imgSize * DIN_A4_RATIO,
-      }}
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (isLoading) return;
-
-        onClick();
-      }}
+    <div
+      className={`relative h-full w-full ${ROUNDING} transition-all bg-gray-50 border border-gray-300 hover:border-blue-500 overflow-hidden shadow hover:shadow-md 
+    ${cursor}
+  `}
     >
       <img
         className={`h-full w-full object-cover bg-gray-50`}
@@ -44,6 +28,19 @@ const Attachment = ({
         style={{
           // To get rid of the border if no image is displayed
           transform: "scale(1.04)",
+        }}
+      />
+
+      {/* Buttons can't be nested in each other, so need to place it absolute */}
+      <button
+        className="absolute inset-0 w-full"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (isLoading) return;
+
+          onClick();
         }}
       />
 
@@ -69,7 +66,7 @@ const Attachment = ({
           <CloseIcon color="white" size={16} />
         )}
       </button>
-    </button>
+    </div>
   );
 };
 export default Attachment;

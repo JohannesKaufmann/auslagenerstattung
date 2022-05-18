@@ -1,9 +1,5 @@
 import React, { useMemo } from "react";
-import Attachment, {
-  DEFAULT_IMG_SIZE,
-  DIN_A4_RATIO,
-  ROUNDING,
-} from "./Attachment";
+import Attachment, { ROUNDING } from "./Attachment";
 import { useDropzone } from "react-dropzone";
 import { FilePlus as FilePlusIcon } from "react-feather";
 
@@ -21,16 +17,17 @@ const Attachments = ({ attachments = [], onDrop }) => {
     [onDrop]
   );
 
+  const CHILD_SIZE = "w-full aspect-dina4";
   return (
     <Dropzone dropOptions={dropOptions}>
-      <ul className="flex gap-4 flex-wrap">
+      <ul className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {attachments.map((attachment, index) => (
-          <li key={index}>
+          <li key={index} className={CHILD_SIZE}>
             <Attachment {...attachment} />
           </li>
         ))}
 
-        <li>
+        <li className={CHILD_SIZE}>
           <UploadImage dropOptions={dropOptions} />
         </li>
       </ul>
@@ -70,7 +67,7 @@ const getBorderColor = (state) => {
   return "border-gray-300";
 };
 
-const UploadImage = ({ size = DEFAULT_IMG_SIZE, dropOptions }) => {
+const UploadImage = ({ dropOptions }) => {
   const { getRootProps, getInputProps, ...state } = useDropzone({
     ...dropOptions,
     noDragEventsBubbling: true,
@@ -80,11 +77,7 @@ const UploadImage = ({ size = DEFAULT_IMG_SIZE, dropOptions }) => {
   return (
     <div
       {...getRootProps({
-        style: {
-          width: size,
-          height: size * DIN_A4_RATIO,
-        },
-        className: `${TRANSITION} bg-gray-50 hover:bg-blue-50 ${ROUNDING} border border-dashed ${borderColor} group hover:border-blue-500 cursor-pointer`,
+        className: `${TRANSITION} h-full w-full bg-gray-50 hover:bg-blue-50 ${ROUNDING} border border-dashed ${borderColor} group hover:border-blue-500 cursor-pointer`,
       })}
     >
       <input {...getInputProps()} />
