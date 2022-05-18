@@ -20,6 +20,9 @@ const EditableMoneyCell = ({
       onValueChange={(_, name, values) => {
         const value = values.float || 0;
 
+        // Don't update the state if nothing changed
+        if (value === initialValue) return;
+
         updateMyData(index, id, value);
       }}
     />

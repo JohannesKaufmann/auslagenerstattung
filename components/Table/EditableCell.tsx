@@ -17,6 +17,9 @@ const EditableCell = ({
 
   // We'll only update the external data when the input is blurred
   const onBlur = () => {
+    // Don't update the state if nothing changed
+    if (value === initialValue) return;
+
     updateMyData(index, id, value);
   };
 
