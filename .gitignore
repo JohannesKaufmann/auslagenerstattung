@@ -28,3 +28,8 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# big assets from testing
+cypress/downloads
+cypress/videos
+cypress/screenshots
