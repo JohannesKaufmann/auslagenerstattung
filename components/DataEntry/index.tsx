@@ -10,6 +10,7 @@ import { handleFiles } from "lib/attachments";
 import { IDocument, dataURLToObjectURL } from "lib/state";
 import DataCompany from "./DataCompany";
 import DataRecipient from "./DataRecipient";
+import Introduction from "components/Introduction";
 
 const DataEntry = ({
   document,
@@ -98,6 +99,8 @@ const DataEntry = ({
   );
   return (
     <main>
+      <Introduction />
+
       <form
         className="p-4 md:p-8"
         onBlur={() => {

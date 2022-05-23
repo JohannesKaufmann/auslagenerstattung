@@ -1,4 +1,7 @@
 {
   "baseUrl": "http://localhost:3000",
-  "downloadsFolder": "cypress/downloads"
+  "downloadsFolder": "cypress/downloads",
+  "integrationFolder": "./",
+  "componentFolder": "./",
+  "testFiles": "{./cypress/integration/**/*.spec.*,./components/**/*.spec.*,./pages/**/*.spec.*,./lib/**/*.spec.*}"
 }

@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+const injectDevServer = require("@cypress/react/plugins/next");
 
 const { readPdf } = require("./read-pdf");
 const path = require("path");
@@ -16,6 +17,8 @@ const findPDF = (filename) => {
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
+  injectDevServer(on, config);
+
   on("task", {
     readPdf,
     findPDF,
