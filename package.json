@@ -6,10 +6,10 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run",
-    "cypress:components": "cypress open-ct",
-    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "cypress:e2e": "cypress open --config-file cypress.e2e.json",
+    "cypress:e2e:headless": "cypress run --config-file cypress.e2e.json",
+    "cypress:ct": "cypress open-ct --config-file cypress.component.json",
+    "cypress:ct:headless": "cypress run-ct --config-file cypress.component.json",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "dependencies": {

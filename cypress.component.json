@@ -1,0 +1,4 @@
+{
+  "componentFolder": "./",
+  "testFiles": "{./components/**/*.test.*,./pages/**/*.test.*,./lib/**/*.test.*}"
+}
