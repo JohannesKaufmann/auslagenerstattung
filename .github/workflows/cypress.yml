@@ -9,13 +9,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cypress run components
-        uses: cypress-io/github-action@v2
-        with:
-          config-file: cypress.component.json
-      - name: Cypress run e2e
+
+      - name: Run E2E tests
         uses: cypress-io/github-action@v2
         with:
           config-file: cypress.e2e.json
           build: yarn run build
           start: yarn run start
+      - name: Run Component tests
+        uses: cypress-io/github-action@v2
+        with:
+          config-file: cypress.component.json
+          # we have already installed everything
+          install: false
+          # to run component tests we need to use "cypress run-ct"
+          command: yarn run cypress:ct:headless
