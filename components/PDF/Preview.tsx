@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from "next/link";
 import PDFDocument from "./Document";
 
 import { usePDF } from "@react-pdf/renderer";
@@ -49,6 +50,14 @@ const PreviewAndDownload = ({ children }) => {
         title={"Title"}
         className="h-full min-h-[500px] mt-4 rounded-md border border-gray-300"
       />
+
+      <div className="mt-2 flex justify-end">
+        <Link href="/privacy">
+          <a className="underline text-sm text-gray-500 hover:text-blue-500">
+            Impressum und Datenschutzerklärung
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };
