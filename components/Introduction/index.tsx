@@ -8,7 +8,16 @@ const questions = [
   {
     question: `Was passiert mit den Daten?`,
     answer: `Die Daten bleiben im Browser und werden niemals an den Server übertragen.`,
-    //    Alles passiert im Browser, sodass keinerlei Daten an den Server gesendet werden.
+  },
+  {
+    question: `Was macht dieses Tool?`,
+    answer: `Dies ist ein Muster für eine Auslagenerstattung. Die sehr einfach online ausgefüllt werden kann.`,
+  },
+  // TODO: keyword "vorlage"
+  {
+    question: `Was ist eine Auslagenerstattung?`,
+    answer:
+      "Mit einer Auslagenerstattung kann man von der Firma Geld zurückbekommen. Zum Beispiel, wenn man etwas für die Firma mit dem eigenen Geld gezahlt hat.",
   },
 ];
 

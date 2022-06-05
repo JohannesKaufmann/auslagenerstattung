@@ -48,32 +48,12 @@ export interface IDocument {
 
 // - - - - - - - - - - - //
 
-// export const getInitialDocument = (): IDocument => ({
-//   company: {
-//     name: "",
-//     street: "",
-//     zipcode: "",
-//     city: "",
-//   },
-//   recipient: {
-//     account_owner: "",
-//
-//     iban: "",
-//     bic: "",
-//   },
-//
-//   records: [],
-//   attachments: [],
-//
-//   signature: null,
-// });
-
 export const getInitialDocument = (): IDocument => ({
   company: {
-    name: "CODE Education GmbH",
-    street: "Lohmühlenstr. 65",
-    zipcode: "12435",
-    city: "Berlin",
+    name: "",
+    street: "",
+    zipcode: "",
+    city: "",
   },
   recipient: {
     account_owner: "",
@@ -84,15 +64,8 @@ export const getInitialDocument = (): IDocument => ({
 
   records: [
     {
-      description:
-        "REWE: Essen für das Mittagessen am Wochenende + Montag da Feiertag sowie Materialen für Brainstorming",
-      // @ts-ignore
-      amount: 405.4,
-    },
-    {
-      description: "Metro",
-      // @ts-ignore
-      amount: 15,
+      description: "",
+      amount: 0.0,
     },
   ],
   attachments: [],

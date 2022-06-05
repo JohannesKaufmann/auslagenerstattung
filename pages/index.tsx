@@ -7,6 +7,10 @@ import DataEntry from "components/DataEntry";
 
 import { getInitialDocument, useThrottledState, IDocument } from "lib/state";
 
+const TITLE = "Auslagenerstattung im Browser ausfüllen";
+const DESCRIPTION =
+  "Spare Zeit bei der Auslagenerstattung! Einfach Daten ausfüllen und Belege anfügen. Ein PDF wird automatisch für dich generiert…";
+
 export default function Home() {
   const [document, setDocument, isStale, throttledDocument, update] =
     useThrottledState<IDocument>(getInitialDocument());
@@ -27,7 +31,8 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <Head>
-        <title>Auslagenerstattung</title>
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
 
         <link
           rel="apple-touch-icon"
