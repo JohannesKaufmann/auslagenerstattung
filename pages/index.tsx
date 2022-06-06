@@ -12,7 +12,11 @@ const DESCRIPTION =
   "Spare Zeit bei der Auslagenerstattung! Einfach Daten ausfüllen und Belege anfügen. Ein PDF wird automatisch für dich generiert…";
 
 const PDFDocumentPreview = dynamic(() => import("../components/PDF/Preview"), {
-  loading: () => <p className="py-10 text-center">Lade Vorschau...</p>,
+  loading: () => (
+    <p data-cy="loading_preview_bundle" className="py-10 text-center">
+      Lade Vorschau...
+    </p>
+  ),
   ssr: false,
 });
 

@@ -11,6 +11,19 @@ const findPDF = (filename) => {
   const contents = fs.existsSync(filename);
   return contents;
 };
+const deleteFolder = (folderName) => {
+  console.log("deleting folder %s", folderName);
+
+  return new Promise((resolve, reject) => {
+    fs.rmdir(folderName, { maxRetries: 10, recursive: true }, (err) => {
+      if (err) {
+        console.error(err);
+        return reject(err);
+      }
+      resolve(null);
+    });
+  });
+};
 
 /**
  * @type {Cypress.PluginConfig}
@@ -26,6 +39,7 @@ module.exports = (on, config) => {
   on("task", {
     readPdf,
     findPDF,
+    deleteFolder,
   });
 
   on("before:browser:launch", (browser, options) => {
