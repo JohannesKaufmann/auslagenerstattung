@@ -32,25 +32,24 @@ const Introduction = () => {
       </p>
       <p>
         Dazu stellen sich weitere Fragen:{" "}
-        <span className="italic">
+        <em className="italic">
           Wie kann ich die Belege an das Formular anhängen?
-        </span>{" "}
-        <span className="italic">
-          Also wie kombiniere ich zwei PDF Dateien?
-        </span>
+        </em>{" "}
+        <em className="italic">Also wie kombiniere ich zwei PDF Dateien?</em>
       </p>
       <p>
         Mit dem Online Tool ist das super einfach. Die komplette
         Auslagenerstattung wird{" "}
-        <span className="font-semibold">automatisch</span> für dich generiert!
+        <strong className="font-semibold">automatisch</strong> für dich
+        generiert!
       </p>
 
       <p className="pt-4">
-        Komplett <span className="font-semibold">kostenlos</span> und{" "}
-        <span className="font-semibold">
+        Komplett <strong className="font-semibold">kostenlos</strong> und{" "}
+        <strong className="font-semibold">
           <span className="underline">ohne</span> Benutzerkonto
-        </span>
-        . Und das <span className="font-semibold">sicher</span> im Browser!
+        </strong>
+        . Und das <strong className="font-semibold">sicher</strong> im Browser!
       </p>
 
       <details
