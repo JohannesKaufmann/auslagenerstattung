@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 
 import { HiddenCanvas } from "components/HiddenCanvas";
-import PDFDocumentPreview from "components/PDF/Preview";
 import DataEntry from "components/DataEntry";
 
 import { getInitialDocument, useThrottledState, IDocument } from "lib/state";
@@ -10,6 +10,11 @@ import { getInitialDocument, useThrottledState, IDocument } from "lib/state";
 const TITLE = "Auslagenerstattung im Browser ausfüllen";
 const DESCRIPTION =
   "Spare Zeit bei der Auslagenerstattung! Einfach Daten ausfüllen und Belege anfügen. Ein PDF wird automatisch für dich generiert…";
+
+const PDFDocumentPreview = dynamic(() => import("../components/PDF/Preview"), {
+  loading: () => <p className="py-10 text-center">Lade Vorschau...</p>,
+  ssr: false,
+});
 
 export default function Home() {
   const [document, setDocument, isStale, throttledDocument, update] =
@@ -66,7 +71,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="w-full lg:h-full lg:w-1/2">
+          <div className="w-full lg:h-full lg:w-1/2 bg-gray-50 border-l border-gray-300">
             <PDFDocumentPreview document={throttledDocument} />
           </div>
         </div>

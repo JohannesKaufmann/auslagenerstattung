@@ -1,16 +1,19 @@
 import React, { useCallback, useRef, useContext } from "react";
+import dynamic from "next/dynamic";
 import SignatureCanvas from "react-signature-canvas";
 
-import { RendererSchedulerContext } from "components/HiddenCanvas";
-import Attachments from "components/Attachments/Attachments";
+import Introduction from "components/Introduction";
 import Table from "components/Table";
 import { Fieldset } from "components/Form";
 
-import { handleFiles } from "lib/attachments";
 import { IDocument, dataURLToObjectURL } from "lib/state";
 import DataCompany from "./DataCompany";
 import DataRecipient from "./DataRecipient";
-import Introduction from "components/Introduction";
+
+const DataAttachments = dynamic(() => import("./DataAttachments"), {
+  loading: () => <p className="py-10 text-center">Lade Anhänge...</p>,
+  ssr: false,
+});
 
 const DataEntry = ({
   document,
@@ -23,7 +26,6 @@ const DataEntry = ({
   document: IDocument;
   [key: string]: any;
 }) => {
-  const scheduler = useContext(RendererSchedulerContext);
   const signatureRef = useRef();
 
   const onSignatureEnd = useCallback(() => {
@@ -41,45 +43,6 @@ const DataEntry = ({
       setTimeout(update, 0);
     });
   }, [signatureRef.current, setDocument, update]);
-
-  const onDrop = useCallback(
-    (acceptedFiles) => {
-      const callbacks = {
-        onAttachments: (attachments) => {
-          setDocument((d) => ({
-            ...d,
-            attachments: [...d.attachments, ...attachments],
-          }));
-        },
-        onPage: (file_object_url, page) => {
-          // TODO: updatePage function
-          setDocument((d: IDocument) => ({
-            ...d,
-            attachments: d.attachments.map((a) => {
-              if (a.file_object_url !== file_object_url) {
-                return a;
-              }
-
-              a.pages = a.pages.map((p) => {
-                if (p.page_num !== page.page_num) {
-                  return p;
-                }
-
-                return page;
-              });
-              return a;
-            }),
-          }));
-        },
-        onComplete: () => {
-          update();
-        },
-      };
-
-      handleFiles(acceptedFiles, scheduler, callbacks);
-    },
-    [scheduler]
-  );
 
   // const onRemoveAttachment = useCallback((document) => {
   //   setDocuments(documents.filter((_, i) => i !== index));
@@ -119,16 +82,10 @@ const DataEntry = ({
         </Fieldset>
 
         <Fieldset title="Anhänge">
-          <Attachments
-            onDrop={onDrop}
-            attachments={document.attachments
-              .map((a) => a.pages)
-              .flat()
-              .map((p) => ({
-                src: p.img_object_url,
-                // @ts-ignore
-                isLoading: p.img_object_url === "",
-              }))}
+          <DataAttachments
+            document={document}
+            setDocument={setDocument}
+            update={update}
           />
         </Fieldset>
 
