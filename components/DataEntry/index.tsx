@@ -9,6 +9,7 @@ import { Fieldset } from "components/Form";
 import { IDocument, dataURLToObjectURL } from "lib/state";
 import DataCompany from "./DataCompany";
 import DataRecipient from "./DataRecipient";
+import { usePlausible } from "next-plausible";
 
 const DataAttachments = dynamic(() => import("./DataAttachments"), {
   loading: () => <p className="py-10 text-center">Lade Anhänge...</p>,
@@ -26,6 +27,7 @@ const DataEntry = ({
   document: IDocument;
   [key: string]: any;
 }) => {
+  const plausible = usePlausible();
   const signatureRef = useRef();
 
   const onSignatureEnd = useCallback(() => {
@@ -66,9 +68,19 @@ const DataEntry = ({
 
       <form
         className="p-4 md:p-8"
-        onBlur={() => {
-          console.log("onblur");
+        onBlur={(evt) => {
           update();
+
+          const name = evt.target.name;
+          console.log(`Input:Blur ${JSON.stringify(name)}`);
+
+          if (name) {
+            plausible("Input:Blur", {
+              props: {
+                name: evt.target.name,
+              },
+            });
+          }
         }}
       >
         <DataCompany company={document.company} changeField={changeField} />

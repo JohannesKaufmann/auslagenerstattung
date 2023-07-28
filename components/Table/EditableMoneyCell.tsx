@@ -11,6 +11,7 @@ const EditableMoneyCell = ({
 }) => {
   return (
     <CurrencyInput
+      name={`cell_${id}`}
       customInput={RawInput}
       className="text-right tabular-nums"
       placeholder={formatAmount(0)}

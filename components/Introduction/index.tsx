@@ -1,3 +1,4 @@
+import { usePlausible } from "next-plausible";
 import React from "react";
 
 const questions = [
@@ -22,6 +23,7 @@ const questions = [
 ];
 
 const Introduction = () => {
+  const plausible = usePlausible();
   return (
     <header className="p-4 md:p-8 pb-0 md:pb-0 space-y-2">
       <h1 className="text-lg font-bold">Auslagenerstattung im Browser</h1>
@@ -57,7 +59,12 @@ const Introduction = () => {
         itemType="https://schema.org/FAQPage"
         className="p-4 rounded border border-gray-300"
       >
-        <summary>
+        <summary
+          className="cursor-pointer"
+          onClick={() => {
+            plausible("FAQ:Toggle");
+          }}
+        >
           <h2 itemProp="name" className="inline font-semibold">
             Häufige Fragen
           </h2>

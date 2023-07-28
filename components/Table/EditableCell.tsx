@@ -28,6 +28,13 @@ const EditableCell = ({
     setValue(initialValue);
   }, [initialValue]);
 
-  return <RawInput value={value} onChange={onChange} onBlur={onBlur} />;
+  return (
+    <RawInput
+      name={`cell_${id}`}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+    />
+  );
 };
 export default EditableCell;

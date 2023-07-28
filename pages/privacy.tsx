@@ -13,6 +13,11 @@ USA`;
 
 const VERCEL_PRIVACY = "https://vercel.com/legal/privacy-policy";
 
+const PLAUSIBLE_ADDR = `Plausible Insights OÜ
+Västriku tn 2, 50403, Tartu, Estonia`;
+
+const PLAUSIBLE_PRIVACY = "https://plausible.io/data-policy";
+
 const PrivacyPage = () => {
   return (
     <>
@@ -55,11 +60,36 @@ const PrivacyPage = () => {
 
         <div>
           <p>
+            Um Statistiken über die Nutzung der Website zu erheben wird der
+            Anbieter <span className="font-semibold">Plausible</span> genutzt:
+          </p>
+          <EntityCard entity={PLAUSIBLE_ADDR}>
+            Datenschutzerklärung:
+            <br />
+            <Link href={PLAUSIBLE_PRIVACY}>{PLAUSIBLE_PRIVACY}</Link>
+          </EntityCard>
+          <p>
+            Es besteht ein berechtigtes Interesse Statistiken über die Nutzung
+            der Website zu erheben <LegalQuote place="Art. 6 Abs. 1 Bst. f" />.
+            Damit kann unter anderem heraus&shy;gefunden werden, wie viele Leute
+            die Website besuchen und welche Funktionen genutzt werden.
+            <br />
+            Um die Privatsphäre der Website-Besucher zu wahren, erhebt Plausible
+            keine personen&shy;bezogenen oder persönlich identifizierbaren
+            Daten. Auch werden keine Cookie gespeichert.
+          </p>
+        </div>
+
+        <Divider />
+
+        <div>
+          <p>
             Für die Bereitstellung der Website wird die Cloud-Plattform{" "}
             <span className="font-semibold">Vercel</span> genutzt:
           </p>
           <EntityCard entity={VERCEL_ADDR}>
-            Datenschutzerklärung:{" "}
+            Datenschutzerklärung:
+            <br />
             <Link href={VERCEL_PRIVACY}>{VERCEL_PRIVACY}</Link>
           </EntityCard>
           <p>

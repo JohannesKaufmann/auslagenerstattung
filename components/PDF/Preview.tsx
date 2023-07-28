@@ -7,8 +7,11 @@ import { usePDF } from "@react-pdf/renderer";
 import ClientOnly from "components/ClientOnly";
 import { Button } from "components/Form";
 import { IDocument } from ".../../lib/state";
+import { usePlausible } from "next-plausible";
 
 const PreviewAndDownload = ({ children }) => {
+  const plausible = usePlausible();
+
   const [instance, updateInstance] = usePDF({
     document: children,
   });
@@ -26,6 +29,8 @@ const PreviewAndDownload = ({ children }) => {
       <div className="flex flex-col lg:flex-row justify-between space-y-2 lg:space-y-0">
         <Button
           onClick={() => {
+            plausible("PDF:Refresh");
+
             updateInstance();
           }}
           className={`${instance.loading ? "animate-pulse" : ""}`}
@@ -38,6 +43,9 @@ const PreviewAndDownload = ({ children }) => {
           primary
           href={instance.url}
           download="auslagenerstattung.pdf"
+          onClick={() => {
+            plausible("PDF:Download");
+          }}
         >
           PDF Herunterladen
         </Button>

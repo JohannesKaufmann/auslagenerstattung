@@ -12,6 +12,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
     <Fieldset title="Firma">
       <div className="grid grid-cols-3 gap-y-2 gap-x-4">
         <Input
+          name="company_name"
           label="Firmenname"
           autoComplete="organization"
           placeholder={placeholders.company.name}
@@ -25,6 +26,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
           }}
         />
         <Input
+          name="company_street"
           label="Straße"
           autoComplete="address-line1"
           placeholder={placeholders.company.street}
@@ -39,6 +41,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
         />
 
         <Input
+          name="company_zipcode"
           label="PLZ"
           autoComplete="postal-code"
           placeholder={placeholders.company.zipcode}
@@ -52,6 +55,7 @@ const DataCompany = ({ company, changeField }: IProps) => {
           }}
         />
         <Input
+          name="company_city"
           label="Ort"
           autoComplete="address-level1"
           placeholder={placeholders.company.city}

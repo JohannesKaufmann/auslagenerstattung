@@ -10,8 +10,8 @@ const Attachments = ({ attachments = [], onDrop }) => {
 
       multiple: true,
       accept: {
-        "image/*": [],
-        "application/pdf": [],
+        // "image/*": [],
+        // "application/pdf": [],
       },
     }),
     [onDrop]

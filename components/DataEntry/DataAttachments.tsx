@@ -6,14 +6,28 @@ import { RendererSchedulerContext } from "components/HiddenCanvas";
 import { handleFiles } from "lib/attachments";
 
 import Attachments from "components/Attachments/Attachments";
+import { usePlausible } from "next-plausible";
 
 const DataAttachments = ({ document, setDocument, update }) => {
+  const plausible = usePlausible();
   const scheduler = useContext(RendererSchedulerContext);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
       const callbacks = {
         onAttachments: (attachments) => {
+          attachments.forEach((attachment) => {
+            console.info("Attachment:Add", attachment.filetype);
+
+            plausible("Attachment:Add", {
+              props: {
+                filetype: attachment.filetype,
+              },
+            });
+          });
+
+          // plausible()
+
           setDocument((d) => ({
             ...d,
             attachments: [...d.attachments, ...attachments],
@@ -46,7 +60,7 @@ const DataAttachments = ({ document, setDocument, update }) => {
 
       handleFiles(acceptedFiles, scheduler, callbacks);
     },
-    [scheduler]
+    [scheduler, plausible]
   );
 
   return (

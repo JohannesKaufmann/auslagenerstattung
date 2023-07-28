@@ -8307,6 +8307,11 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
+next-plausible@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-3.10.1.tgz#aaf30e8aaa7c7b437a790856c3ceb8ab8a7a44ab"
+  integrity sha512-3GyBQH+sUfovemgwvodx84djMlF/o+FoSPtCS2QVFNiJtwGFuhs6CQckMIv+VWdz9zERwZB2nJLJLmgV6aT/aA==
+
 next@^12.1.6:
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/next/-/next-12.1.6.tgz#eb205e64af1998651f96f9df44556d47d8bbc533"

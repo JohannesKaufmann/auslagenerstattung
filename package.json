@@ -16,6 +16,7 @@
     "@react-pdf/renderer": "^2.1.1",
     "async-mutex": "^0.3.2",
     "next": "^12.1.6",
+    "next-plausible": "^3.10.1",
     "pdfjs-dist": "^2.13.216",
     "react": "^18.1.0",
     "react-currency-input-field": "^3.6.4",

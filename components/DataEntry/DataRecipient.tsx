@@ -13,6 +13,7 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
     <Fieldset title="Empfänger">
       <div className="grid grid-cols-3 gap-y-2 gap-x-4">
         <Input
+          name="recipient_account_owner"
           label="Kontoinhaber"
           autoComplete="name"
           placeholder={placeholders.recipient.account_owner}
@@ -27,6 +28,7 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
         />
 
         <Input
+          name="recipient_iban"
           label="IBAN"
           className="tabular-nums"
           placeholder={placeholders.recipient.iban}
@@ -40,6 +42,7 @@ const DataRecipient = ({ recipient, changeField }: IProps) => {
           }}
         />
         <Input
+          name="recipient_bic"
           label="BIC"
           className="tabular-nums"
           placeholder={placeholders.recipient.bic}
