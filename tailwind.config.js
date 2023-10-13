@@ -11,5 +11,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@headlessui/tailwindcss"), require("@tailwindcss/forms")],
 };

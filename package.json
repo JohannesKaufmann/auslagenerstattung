@@ -13,6 +13,8 @@
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@headlessui/tailwindcss": "^0.2.0",
     "@react-pdf/renderer": "^2.1.1",
     "async-mutex": "^0.3.2",
     "next": "^12.1.6",

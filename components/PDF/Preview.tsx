@@ -9,7 +9,11 @@ import { Button } from "components/Form";
 import { IDocument } from ".../../lib/state";
 import { usePlausible } from "next-plausible";
 
+import { NPSModal, useNps } from "components/NPS";
+
 const PreviewAndDownload = ({ children }) => {
+  const [isOpen, setIsOpen, score, setScore, screen, setScreen] = useNps();
+
   const plausible = usePlausible();
 
   const [instance, updateInstance] = usePDF({
@@ -45,10 +49,21 @@ const PreviewAndDownload = ({ children }) => {
           download="auslagenerstattung.pdf"
           onClick={() => {
             plausible("PDF:Download");
+
+            setIsOpen(true);
           }}
         >
           PDF Herunterladen
         </Button>
+
+        <NPSModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          score={score}
+          setScore={setScore}
+          screen={screen}
+          setScreen={setScreen}
+        />
       </div>
 
       {instance.error && <div>Something went wrong: {instance.error}</div>}
