@@ -20,6 +20,14 @@ const questions = [
     answer:
       "Mit einer Auslagenerstattung kann man von der Firma Geld zurückbekommen. Zum Beispiel, wenn man etwas für die Firma mit dem eigenen Geld gezahlt hat.",
   },
+  {
+    question: `Kontakt`,
+    answer: `
+Sie finden es hilfreich? Sie haben Verbesserungsvorschläge? Ich würde mich freuen, von Ihnen zu hören!
+
+Schreib Sie mir gerne eine Email an johannes@joina.de
+    `.trim(),
+  },
 ];
 
 const Introduction = () => {
