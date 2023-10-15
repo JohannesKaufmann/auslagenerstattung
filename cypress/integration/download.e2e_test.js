@@ -47,10 +47,10 @@ describe("Download Button", () => {
         });
 
         // First check that the href attribute is not empty
-        cy.get(BUTTON).should("have.attr", "href").should("not.be.empty");
+        cy.get(BUTTON).invoke("attr", "href").should("not.be.empty");
 
         cy.get(BUTTON)
-          .should("have.attr", "href")
+          .invoke("attr", "href")
           .then((hrefBefore) => {
             cy.log("hrefBefore:", hrefBefore);
             expect(hrefBefore.startsWith("blob:")).to.be.true;
@@ -64,17 +64,14 @@ describe("Download Button", () => {
               .type(NAME)
               .blur();
 
-            cy.waitUntil(() =>
-              cy
-                .get(BUTTON)
-                .should("have.attr", "href")
-                .then((hrefAfter) => {
-                  cy.log("hrefAfter:", hrefAfter);
-                })
-                // We wait for the url to CHANGE, to
-                // reflect the new value of the input
-                .then((hrefAfter) => hrefAfter !== hrefBefore)
-            );
+            cy.get(BUTTON)
+              .invoke("attr", "href")
+              // We wait for the url to CHANGE, to
+              // reflect the new value of the input
+              .should("not.equal", hrefBefore)
+              .then((hrefAfter) => {
+                cy.log("hrefAfter:", hrefAfter);
+              });
           });
 
         // By clicking the button we download the file.
