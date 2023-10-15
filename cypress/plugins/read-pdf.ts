@@ -1,7 +1,7 @@
-const fs = require("fs");
-const pdf = require("pdf-parse");
+import fs from "fs";
+import pdf from "pdf-parse";
 
-const readPdf = (filename) => {
+export const readPdf = (filename) => {
   console.log("reading PDF file %s", filename);
 
   const dataBuffer = fs.readFileSync(filename);
@@ -13,5 +13,3 @@ const readPdf = (filename) => {
     };
   });
 };
-
-module.exports = { readPdf };

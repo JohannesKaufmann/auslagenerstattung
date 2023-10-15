@@ -1,6 +1,0 @@
-{
-  "baseUrl": "http://localhost:3000",
-  "downloadsFolder": "cypress/downloads",
-  "integrationFolder": "./",
-  "testFiles": "{./cypress/integration/**/*.e2e_test.*,./components/**/*.e2e_test.*,./pages/**/*.e2e_test.*}"
-}
