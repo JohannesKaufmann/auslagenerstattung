@@ -19,7 +19,9 @@ const PreviewAndDownload = ({ children }) => {
   const [instance, updateInstance] = usePDF({
     document: children,
   });
-  useEffect(updateInstance, [children]);
+  useEffect(() => {
+    updateInstance(children);
+  }, [children]);
 
   if (instance.error) return;
 
@@ -35,7 +37,7 @@ const PreviewAndDownload = ({ children }) => {
           onClick={() => {
             plausible("PDF:Refresh");
 
-            updateInstance();
+            updateInstance(children);
           }}
           className={`${instance.loading ? "animate-pulse" : ""}`}
         >
@@ -75,10 +77,11 @@ const PreviewAndDownload = ({ children }) => {
       />
 
       <div className="mt-2 flex justify-end">
-        <Link href="/privacy">
-          <a className="underline text-sm text-gray-500 hover:text-blue-500">
-            Impressum und Datenschutzerklärung
-          </a>
+        <Link
+          href="/privacy"
+          className="underline text-sm text-gray-500 hover:text-blue-500"
+        >
+          Impressum und Datenschutzerklärung
         </Link>
       </div>
     </div>
