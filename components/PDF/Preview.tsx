@@ -49,6 +49,7 @@ const PreviewAndDownload = ({ children }) => {
           primary
           href={instance.url}
           download="auslagenerstattung.pdf"
+          target="_blank"
           onClick={() => {
             plausible("PDF:Download");
 
