@@ -6,7 +6,7 @@ import Introduction from "components/Introduction";
 import Table from "components/Table";
 import { Fieldset } from "components/Form";
 
-import { IDocument, dataURLToObjectURL } from "lib/state";
+import { IDocument, dataURLToObjectURL, placeholders } from "lib/state";
 import DataCompany from "./DataCompany";
 import DataRecipient from "./DataRecipient";
 import { usePlausible } from "next-plausible";
@@ -106,6 +106,23 @@ const DataEntry = ({
           recipient={document.recipient}
           changeField={changeField}
         />
+
+        <Fieldset title="Notiz (optional)">
+          <textarea
+            name="note"
+            className={`mt-1 focus:ring-blue-500 focus:border-blue-500 block shadow-sm sm:text-sm border-gray-300 rounded-md placeholder-gray-300 w-full`}
+            placeholder={placeholders.note}
+            value={document.note}
+            onChange={(e) => {
+              const val = e.target.value;
+
+              setDocument((d) => ({
+                ...d,
+                note: val,
+              }));
+            }}
+          ></textarea>
+        </Fieldset>
 
         <Fieldset title="Auflistung">
           <Table records={document.records} updateRecords={updateRecords} />

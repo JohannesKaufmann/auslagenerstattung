@@ -40,6 +40,8 @@ export interface IDocument {
   company: ICompany;
   recipient: IRecipient;
 
+  note: string;
+
   records: IRecord[];
   attachments: IAttachment[];
 
@@ -61,6 +63,7 @@ export const getInitialDocument = (): IDocument => ({
     iban: "",
     bic: "",
   },
+  note: "",
 
   records: [
     {
@@ -78,6 +81,7 @@ export const getInitialDocument = (): IDocument => ({
 export interface IPlaceholders {
   company: ICompany;
   recipient: IRecipient;
+  note: string;
 }
 export const placeholders: IPlaceholders = {
   company: {
@@ -92,6 +96,7 @@ export const placeholders: IPlaceholders = {
     iban: "DE02100500000054540402",
     bic: "BELADEBE",
   },
+  note: "z.B. Reisekosten für den Besuch einer Konferenz",
 };
 
 // - - - - - - - - - - - //

@@ -107,6 +107,8 @@ const PDFDocument = ({ document }: { document: IDocument }) => {
           recipient={document.recipient}
         />
 
+        {document.note ? <Text>{document.note}</Text> : null}
+
         <RecordsTable records={document.records} />
 
         {document.signature !== null && (
