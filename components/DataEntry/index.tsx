@@ -46,6 +46,24 @@ const DataEntry = ({
     });
   }, [signatureRef.current, setDocument, update]);
 
+  const onClearSignature = useCallback(() => {
+    if (!signatureRef.current) return;
+
+    if (!window.confirm("Möchten Sie die Unterschrift zurücksetzen?")) {
+      return;
+    }
+
+    // @ts-ignore
+    signatureRef.current.clear();
+
+    setDocument((d) => ({
+      ...d,
+      signature: null,
+    }));
+
+    setTimeout(update, 0);
+  }, [signatureRef.current, setDocument, update]);
+
   // const onRemoveAttachment = useCallback((document) => {
   //   setDocuments(documents.filter((_, i) => i !== index));
   //   URL.revokeObjectURL(document.object_url);
@@ -116,6 +134,14 @@ const DataEntry = ({
                 "rounded-lg bg-gray-100 border border-gray-300 w-full h-[300px]",
             }}
           />
+          <div className="flex justify-end">
+            <a
+              className="cursor-pointer underline text-sm text-gray-500 hover:text-blue-500"
+              onClick={onClearSignature}
+            >
+              Unterschrift zurücksetzen
+            </a>
+          </div>
         </Fieldset>
       </form>
     </main>
