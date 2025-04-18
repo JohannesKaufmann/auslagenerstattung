@@ -10,14 +10,21 @@ export const formatAmount = (value: number): string => {
   });
 };
 
+const floatToInt = (num: number) => num * 100;
+const intToFloat = (num: number) => Math.round(num) / 100;
+
 export const getTotal = (records: IRecord[]): string => {
   if (!records) records = [];
 
-  const amounts = records
+  const amountsInCents = records
     .map((e) => e.amount)
-    .filter((e) => e !== undefined && e !== null);
+    .filter((e) => e !== undefined && e !== null)
+    .map((amount) => floatToInt(amount));
 
-  const total = amounts.reduce((partialSum, a) => partialSum + a, 0);
+  const totalInCents = amountsInCents.reduce(
+    (partialSum, a) => partialSum + a,
+    0
+  );
 
-  return formatAmount(total);
+  return formatAmount(intToFloat(totalInCents));
 };
